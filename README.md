@@ -1,7 +1,9 @@
 # Hyperion Runtime Environment
 ### High-Performance Signals-Based Userspace Unikernel
 
-> **Classification:** Technical Specification // Release 1.0.0
+<p align="center">
+  <img src="https://github.com/farukalpay/hyperion-euntime-environment/blob/main/img1.png?raw=true" width="100%">
+</p>
 
 The **Hyperion Runtime** is a specialized execution environment designed for high-throughput semantic processing. It implements a **Userspace Unikernel** architecture, bypassing standard Operating System abstractions to achieve deterministic latency and direct hardware control. By leveraging cooperative fiber scheduling and a signal-based virtual paging mechanism, Hyperion minimizes context switch overhead and maximizes data locality.
 
