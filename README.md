@@ -15,8 +15,8 @@ The system functions as a monolithic process operating in a single address space
 graph TD
     A[Input Ingest] -->|Raw Stream| B(Processing Unit);
     B -->|Tokenize & Vectorize| C{JIT Optimizer};
-    C -->|Direct Memory Write| D[Virtual Memory (1TB)];
-    D -.->|SIGBUS/SIGSEGV| E[Memory Manager Trap];
+    C -->|Direct Memory Write| D["Virtual Memory (1TB)"];
+    D -.->|"SIGBUS/SIGSEGV"| E[Memory Manager Trap];
     E -.->|mprotect| F[Physical RAM];
     
     subgraph KERNEL
@@ -39,7 +39,7 @@ Instead of relying on the OS file cache, Hyperion manages a 1 TB virtual address
 *   **Lazy Allocation**: Pages are reserved via `mmap(PROT_NONE)`.
 *   **Signal Handling**: Access violations trigger `SIGBUS` (macOS) or `SIGSEGV` (Linux).
 *   **Resolution**: The `MemoryManager` intercepts the signal, commits physical pages via `mprotect`, and resumes execution transparently.
-*   **Resolution**: The `MemoryManager` intercepts the signal, commits physical pages via `mprotect`, and resumes execution transparently.
+
 
 ### 2.3 Intrusive Slab Allocator
 A custom "Linux-style" allocator handling the persistent Ghost Memory region.
